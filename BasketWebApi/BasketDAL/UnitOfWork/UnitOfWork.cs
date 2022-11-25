@@ -1,11 +1,16 @@
 ﻿using BasketBL.Interfaces;
+using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using BasketDAL.Factories;
 using BasketDAL.Repositories;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
-using System.Data;
 
-namespace BasketDAL
+namespace BasketDAL.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {
@@ -104,7 +109,7 @@ namespace BasketDAL
                     return (IRepository<TEntity>)Repositories[typeName];
                 }
 
-                var repository = new Repository<TEntity>(DbContext);
+                var repository = new RepositoryBase<TEntity>(DbContext);
 
                 Repositories.Add(typeName, repository);
 

@@ -14,18 +14,8 @@ namespace BasketBL.Interfaces
 
         Task<IList<T>> GetAllAsync();
 
-        T Find(params object[] keyValues);
-
         Task<T> FindAsync(params object[] keyValues);
 
         Task InsertAsync(T entity, bool saveChanges = true);
-
-        Task InsertRangeAsync(IEnumerable<T> entities, bool saveChanges = true);
-
-        Task DeleteAsync(int id, bool saveChanges = true);
-
-        Task DeleteAsync(T entity, bool saveChanges = true);
-
-        Task DeleteRangeAsync(IEnumerable<T> entities, bool saveChanges = true);
     }
 }
